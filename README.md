@@ -1,8 +1,8 @@
 # Better DD For Laravel
-Replace your `dump` and `dd` calls with `dumpl` and `ddl` to get the filepath and line number included. A simple but **much needed** feature IMO 😅.
+😅 Replace your `dump` / `dd` calls with `dumpl` / `ddl` to get the filepath and line number included. A simple but **much needed** feature! Works in both the browser and terminal.
 
 ## Requirements
-- Laravel (any version 4.* / 5.*)
+- Laravel (any 4.* / 5.* version)
 
 ## Getting Started
 
