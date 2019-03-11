@@ -16,7 +16,7 @@
             "JoeyRush\\BetterDD\\": "src"
         },
         "files": [
-            "src/dump.php"
+            "src/functions.php"
         ]
     }
 }
