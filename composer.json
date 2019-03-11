@@ -1,0 +1,17 @@
+{
+    "name": "joerushton/better-dd",
+    "description": "Die and dump with line number and file path",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Joe Macbook",
+            "email": "joe_rushton@hotmail.co.uk"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "files": [
+            "src/dump.php"
+        ]
+    }
+}
