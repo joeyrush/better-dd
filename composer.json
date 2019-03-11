@@ -2,13 +2,21 @@
     "name": "joeyrush/better-dd",
     "description": "Die and dump with line number and file path",
     "type": "library",
+    "keywords": [
+        "better-dd"
+    ],
     "authors": [
         {
-            "name": "Joe Macbook",
-            "email": "joe_rushton@hotmail.co.uk"
+            "name": "Joe Rushton",
+            "email": "joe_rushton@hotmail.co.uk",
+            "homepage": "https://joerushton.com",
+            "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/joeyrush/better-dd",
+    "license": "MIT",
     "require": {
+        "php": "^7.0",
         "symfony/var-dumper": "*"
     },
     "autoload": {
