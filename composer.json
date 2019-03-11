@@ -10,6 +10,9 @@
     ],
     "require": {},
     "autoload": {
+        "psr-4": {
+            "JoeyRush\\BetterDD\\": "src"
+        },
         "files": [
             "src/dump.php"
         ]
