@@ -8,7 +8,9 @@
             "email": "joe_rushton@hotmail.co.uk"
         }
     ],
-    "require": {},
+    "require": {
+        "symfony/var-dumper": "*"
+    },
     "autoload": {
         "psr-4": {
             "JoeyRush\\BetterDD\\": "src"
