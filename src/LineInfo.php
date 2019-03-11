@@ -20,9 +20,12 @@ class LineInfo
         $file = str_replace(base_path() . DIRECTORY_SEPARATOR, '', $backtrace[1]['file']);
         $lineInfo = sprintf('<div>&nbsp;<strong>%s</strong> (line <strong>%s</strong>)</div>', $file, $backtrace[1]['line']);
 
-        // In CLI, remove HTML and add a new line char.
         if (PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg') {
-            $lineInfo = str_replace('&nbsp;', '', strip_tags($lineInfo)) . "\n";
+            // In CLI, remove HTML and add a new line char. Also by putting it in a certain format (path/to/file:line_num)
+            // We get the added bonus of being able to Command+Click to open in iTerm (and possibly other shells)
+            $lineInfo = sprintf("%s:%s\n", $file, $backtrace[1]['line']);
+        } else {
+            $lineInfo = sprintf('<div>&nbsp;<strong>%s</strong> (line <strong>%s</strong>)</div>', $file, $backtrace[1]['line']);
         }
 
         return $lineInfo;
