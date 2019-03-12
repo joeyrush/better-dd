@@ -1,7 +1,7 @@
 <?php
 
+use JoeyRush\BetterDD\DumpFactory;
 use JoeyRush\BetterDD\LineInfo;
-use Symfony\Component\VarDumper\VarDumper;
 
 if (!function_exists('dumpl')) {
     /**
@@ -13,9 +13,11 @@ if (!function_exists('dumpl')) {
      */
     function dumpl(...$vars)
     {
-        printf(LineInfo::get());
+        LineInfo::print(LineInfo::get());
+
+        $dumpFactory = new DumpFactory;
         foreach ($vars as $var) {
-            VarDumper::dump($var);
+            $dumpFactory->dump($var);
         }
 
         return $vars;
@@ -32,9 +34,11 @@ if (!function_exists('ddl')) {
      */
     function ddl(...$vars)
     {
-        printf(LineInfo::get());
+        LineInfo::print(LineInfo::get());
+
+        $dumpFactory = new DumpFactory;
         foreach ($vars as $var) {
-            VarDumper::dump($var);
+            $dumpFactory->dump($var);
         }
 
         die;
