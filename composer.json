@@ -26,5 +26,12 @@
         "files": [
             "src/functions.php"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JoeyRush\\BetterDD\\BetterDDServiceProvider"
+            ]
+        }
     }
 }
