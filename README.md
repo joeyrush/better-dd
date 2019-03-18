@@ -60,3 +60,6 @@ return [
     'max_items_per_depth' => -1
 ];
 ```
+
+## Tests
+After a composer install, run `composer test`
