@@ -6,7 +6,7 @@
 ![](https://i.imgur.com/w35SliI.gif)
 
 ## Requirements
-- Laravel (any 4.* / 5.* version)
+- Any version of laravel
 
 ## Getting Started
 
