@@ -12,16 +12,9 @@ class LineInfo
      *
      * @return string
      */
-    public static function get()
+    public static function pretty()
     {
-        $backtrace = debug_backtrace();
-        if ($backtrace instanceof \Exception) {
-            $backtrace = $backtrace->getTrace();
-        }
-
-        // Strip the noise out of the filepath so we just have a project relative path
-        $file = str_replace(base_path() . DIRECTORY_SEPARATOR, '', $backtrace[1]['file']);
-        $line = $backtrace[1]['line'];
+        [$file, $line] = static::get();
 
         if (PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg') {
             // In CLI, remove HTML and add a new line char. Also by putting it in a certain format (path/to/file:line_num)
@@ -32,6 +25,26 @@ class LineInfo
         }
 
         return $lineInfo;
+    }
+
+    /**
+     * Gets a pretty filename / line number based on the calling calling code from the stack trace.
+     * (two-levels deep because this will be triggered by a helper triggered by your code)
+     *
+     * @return string
+     */
+    public static function get()
+    {
+        $backtrace = debug_backtrace();
+        if ($backtrace instanceof \Exception) {
+            $backtrace = $backtrace->getTrace();
+        }
+
+        // Strip the noise out of the filepath so we just have a project relative path
+        $file = str_replace(base_path() . DIRECTORY_SEPARATOR, '', $backtrace[2]['file']);
+        $line = $backtrace[2]['line'];
+
+        return [$file, $line];
     }
 
     public static function print($lineInfo)

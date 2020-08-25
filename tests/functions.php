@@ -18,6 +18,6 @@ if (!function_exists('base_path')) {
 if (!function_exists('call_line_info_get')) {
     function call_line_info_get()
     {
-        return JoeyRush\BetterDD\LineInfo::get();
+        return JoeyRush\BetterDD\LineInfo::pretty();
     }
 }

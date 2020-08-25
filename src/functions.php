@@ -13,7 +13,11 @@ if (!function_exists('dumpl')) {
      */
     function dumpl(...$vars)
     {
-        LineInfo::print(LineInfo::get());
+        if (request()->expectsJson()) {
+            return ddJson(...$vars);
+        }
+
+        LineInfo::print(LineInfo::pretty());
 
         $dumpFactory = new DumpFactory;
         foreach ($vars as $var) {
@@ -34,7 +38,11 @@ if (!function_exists('ddl')) {
      */
     function ddl(...$vars)
     {
-        LineInfo::print(LineInfo::get());
+        if (request()->expectsJson()) {
+            return ddJson(...$vars);
+        }
+
+        LineInfo::print(LineInfo::pretty());
 
         $dumpFactory = new DumpFactory;
         foreach ($vars as $var) {
@@ -44,3 +52,26 @@ if (!function_exists('ddl')) {
         die;
     }
 }
+
+if (!function_exists('ddJson')) {
+    /**
+     * Dump, die and print line info
+     *
+     * Same as dl() but kills the script after dumping vars.
+     * @param  $vars
+     * @return       [description]
+     */
+    function ddJson(...$vars)
+    {
+        [$file, $line] = LineInfo::get();
+
+        $print = ['line' => sprintf('%s (line %s)', $file, $line),];
+        foreach ($vars as $var) {
+            $print[] = $var;
+        }
+        print_r($print);
+        die;
+    }
+}
+
+
