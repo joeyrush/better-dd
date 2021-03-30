@@ -16,7 +16,7 @@
     "homepage": "https://github.com/joeyrush/better-dd",
     "license": "MIT",
     "require": {
-        "php": "^7.0",
+        "php": "^7.0 || ^8.0",
         "symfony/var-dumper": "*"
     },
     "require-dev": {
