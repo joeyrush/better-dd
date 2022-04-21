@@ -6,7 +6,7 @@ use Symfony\Component\VarDumper\Dumper\CliDumper;
 
 class LineNumberCliDumper extends CliDumper
 {
-    public function dump(Data $data, $output = null)
+    public function dump(Data $data, $output = null): ?string
     {
         $this->setStyles(['str' => '1;38;5;97']);
         return parent::dump($data, $output);
