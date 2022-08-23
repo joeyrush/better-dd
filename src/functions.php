@@ -13,8 +13,8 @@ if (!function_exists('dumpl')) {
      */
     function dumpl(...$vars)
     {
-        if (request()->expectsJson()) {
-            return ddJson(...$vars);
+        if (request()->expectsJson() && ! app()->runningInConsole()) {
+            return dumpJson(...$vars);
         }
 
         LineInfo::print(LineInfo::pretty());
@@ -38,7 +38,7 @@ if (!function_exists('ddl')) {
      */
     function ddl(...$vars)
     {
-        if (request()->expectsJson()) {
+        if (request()->expectsJson() && ! app()->runningInConsole()) {
             return ddJson(...$vars);
         }
 
@@ -71,6 +71,23 @@ if (!function_exists('ddJson')) {
         }
         print_r($print);
         die;
+    }
+}
+
+if (!function_exists('dumpJson')) {
+    /**
+     * @param  $vars
+     * @return       [description]
+     */
+    function dumpJson(...$vars)
+    {
+        [$file, $line] = LineInfo::get();
+
+        $print = ['line' => sprintf('%s (line %s)', $file, $line),];
+        foreach ($vars as $var) {
+            $print[] = $var;
+        }
+        print_r($print);
     }
 }
 
